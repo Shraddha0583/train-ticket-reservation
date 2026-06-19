@@ -1,21 +1,90 @@
 {
-  "family": "train-app-new",
-  "networkMode": "awsvpc",
-  "executionRoleArn": "arn:aws:iam::474668386320:role/ecsTaskExecutionRole",
-  "containerDefinitions": [
-    {
-      "name": "train-app",
-      "image": "474668386320.dkr.ecr.us-west-1.amazonaws.com/train-ticket:1763458983",
-      "portMappings": [
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:422261031406:task-definition/project6:1",
+    "containerDefinitions": [
         {
-          "containerPort": 8080,
-          "protocol": "tcp"
+            "name": "wordpress",
+            "image": "422261031406.dkr.ecr.ap-southeast-1.amazonaws.com/project6@sha256:eb10735c3ffc1087162a79afa99ae0494441e0680cc804e9a0b1b51589e29212",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "name": "port",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/project6",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "ap-southeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
         }
-      ],
-      "essential": true
-    }
-  ],
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "256",
-  "memory": "512"
+    ],
+    "family": "project6",
+    "executionRoleArn": "arn:aws:iam::422261031406:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE",
+        "MANAGED_INSTANCES"
+    ],
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "4096",
+    "memory": "8192",
+    "registeredAt": "2026-06-19T09:01:01.161Z",
+    "registeredBy": "arn:aws:iam::422261031406:user/user",
+    "enableFaultInjection": false,
+    "tags": []
 }
